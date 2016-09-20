@@ -6,6 +6,17 @@ valid = [0,1,2]
 player_1_turns = [1,3,5,7,9]
 player_2_turns = [2,4,6,8]
 
+# practice = [["A", "B", "C"],
+#             ["D", "E", "F"],
+#             ["G", "H", "I"]
+#             ]
+#
+# column_0 = [board[0][0], board[1][0], board[2][0]]
+# column_1 = [board[0][1], board[1][1], board[2][1]]
+# column_2 = [board[0][2], board[1][2], board[2][2]]
+
+
+
 
 def change_board_1(row, column):
     board[row][column] = "X"
@@ -55,18 +66,38 @@ def player_2_turn():
     show_board(board)
 
 def check_winner():
-    if "X" and "-" not in board[0]:
+    column_0 = [board[0][0], board[1][0], board[2][0]]
+    column_1 = [board[0][1], board[1][1], board[2][1]]
+    column_2 = [board[0][2], board[1][2], board[2][2]]
+    print(column_0, column_1, column_2)
+    print(board[0], board[1], board[2])
+
+    if "X" not in board[0] and "-" not in board[0]:
         return True
-    elif "O" and "-" not in board[0]:
+    elif "O" not in board[0] and "-" not in board[0]:
         return True
-    elif "X" and "-" not in board[1]:
+    elif "X" not in board[1] and "-" not in board[1]:
         return True
-    elif "O" and "-" not in board[1]:
+    elif "O" not in board[1] and "-" not in board[1]:
         return True
-    elif "X" and "-" not in board[2]:
+    elif "X" not in board[2] and "-" not in board[2]:
         return True
-    elif "O" and "-" not in board[2]:
+    elif "O" not in board[2] and "-" not in board[2]:
         return True
+    elif "X" not in column_0 and "-" not in column_0:
+        return True
+    elif "0" not in column_0 and "-" not in column_0:
+        return True
+    elif "X" not in column_1 and "-" not in column_1:
+        return True
+    elif "0" not in column_1 and "-" not in column_1:
+        return True
+    elif "X" not in column_2 and "-" not in column_2:
+        return True
+    elif "0" not in column_2 and "-" not in column_2:
+        return True
+
+
 
 
 
