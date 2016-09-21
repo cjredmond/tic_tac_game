@@ -6,42 +6,19 @@ valid = [0,1,2]
 player_1_turns = [1,3,5,7,9]
 player_2_turns = [2,4,6,8]
 
-
-
-
-
 def make_board():
     return [["-", "-", "-"],
             ["-", "-", "-"],
             ["-", "-", "-"]
              ]
-# def change_board_1(row, column, player):
-#     board[row][column] = player
-#     return board
 
 def change_board(board, row, column, player):
     board[row][column] = player
     return board
 
-
-# def change_board_2(row, column):
-#     board[row][column] = "O"
-#     return board
 def show_board(board):
     for line in board:
         print(line)
-
-# def player_1_choice_row():
-#     player_1_row = "start"
-#     while player_1_row not in valid:
-#         player_1_row = int(input("Choose a row for an X:   "))
-#     return player_1_row
-
-# def player_1_choice_column():
-#     player_1_column = "start"
-#     while player_1_column not in valid:
-#         player_1_column = int(input("Choose a column for an X:   "))
-#     return player_1_column
 
 def player_choice_column(player):
     player_column = "start"
@@ -55,32 +32,21 @@ def player_choice_row(player):
         player_row = int(input("Choose a row for an {}:   ".format(player)))
     return player_row
 
-# def player_move(player):
-#     player_row = "start"
-#     player_column = "start"
-#     while move[0] or move[1] not in valid:
-#         player_row = int(input("Choose a row for an {}:   ".format(player)))
-#         player_column = int(input("Choose a column for an {}:   ".format(player)))
-#     return [player_row, player_column]
+def player_move(player):
+    player_row = "start"
+    player_column = "start"
+    while player_row not in valid or player_column not in valid:
+        player_row = int(input("Choose a row for an {}:   ".format(player)))
+        player_column = int(input("Choose a column for an {}:   ".format(player)))
+    return player_row, player_column
 
 
-#
-# def player_2_choice_row():
-#     player_2_row = "start"
-#     while player_2_row not in valid:
-#         player_2_row = int(input("Choose a row for an O:   "))
-#     return player_2_row
 
-# def player_2_choice_column():
-#     player_2_column = "start"
-#     while player_2_column not in valid:
-#         player_2_column = int(input("Choose a column for an O:   "))
-#     return player_2_column
 
 def player_1_turn():
     print("PLAYER 1 it is your turn \n")
     row = player_choice_row("X")
-    column = player_choice_column("O")
+    column = player_choice_column("X")
     if board[row][column] == "-":
         change_board(board, row, column,  "X")
         show_board(board)
@@ -105,8 +71,7 @@ def check_winner():
     column_2 = [board[0][2], board[1][2], board[2][2]]
     diagonal_a = [board[0][0], board[1][1], board[2][2]]
     diagonal_b = [board[0][2], board[1][1], board[2][0]]
-    # print(column_0, column_1, column_2)
-    # print(board[0], board[1], board[2])
+
 
     if "X" not in board[0] and "-" not in board[0]:
         print("Player 2 Wins")
@@ -171,15 +136,9 @@ def game(board):
         if turn == 10:
             print("Looks like a stalemate")
         elif turn in player_1_turns:
-            player_1_row = "start"
-            player_1_column = "start"
             player_1_turn()
         else:
-
-            player_2_row = "start"
-            player_2_column = "start"
             player_2_turn()
-
 
 keep_going = "y"
 
