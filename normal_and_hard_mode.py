@@ -17,7 +17,11 @@ player_2_turns = [2,4,6,8]
 
 
 
-
+def make_board():
+    return [["-", "-", "-"],
+            ["-", "-", "-"],
+            ["-", "-", "-"]
+             ]
 def change_board_1(row, column):
     board[row][column] = "X"
     return board
@@ -84,39 +88,84 @@ def check_winner():
     # print(board[0], board[1], board[2])
 
     if "X" not in board[0] and "-" not in board[0]:
+        print("Player 2 Wins")
         return True
     elif "O" not in board[0] and "-" not in board[0]:
+        print("Player 1 Wins")
         return True
     elif "X" not in board[1] and "-" not in board[1]:
+        print("Player 2 Wins")
         return True
     elif "O" not in board[1] and "-" not in board[1]:
+        print("Player 1 Wins")
         return True
     elif "X" not in board[2] and "-" not in board[2]:
+        print("Player 2 Wins")
         return True
     elif "O" not in board[2] and "-" not in board[2]:
+        print("Player 1 Wins")
         return True
     elif "X" not in column_0 and "-" not in column_0:
+        print("Player 2 Wins")
         return True
     elif "O" not in column_0 and "-" not in column_0:
+        print("Player 1 Wins")
         return True
     elif "X" not in column_1 and "-" not in column_1:
+        print("Player 2 Wins")
         return True
     elif "O" not in column_1 and "-" not in column_1:
+        print("Player 1 Wins")
         return True
     elif "X" not in column_2 and "-" not in column_2:
+        print("Player 2 Wins")
         return True
     elif "O" not in column_2 and "-" not in column_2:
+        print("Player 1 Wins")
         return True
     elif "O" not in diagonal_a and "-" not in diagonal_a:
+        print("Player 1 Wins")
         return True
     elif "X" not in diagonal_a and "-" not in diagonal_a:
+        print("Player 2 Wins")
         return True
     elif "O" not in diagonal_b and "-" not in diagonal_b:
+        print("Player 1 Wins")
         return True
     elif "X" not in diagonal_b and "-" not in diagonal_b:
+        print("Player 2 Wins")
         return True
     else:
         return False
+
+
+
+def game(board):
+    for x in board:
+        print(x)
+    for turn in range(1,11):
+        if check_winner() == True:
+            print("We have a winner")
+            break
+        if turn == 10:
+            print("Looks like a stalemate")
+        elif turn in player_1_turns:
+            player_1_row = "start"
+            player_1_column = "start"
+            player_1_turn()
+        else:
+
+            player_2_row = "start"
+            player_2_column = "start"
+            player_2_turn()
+
+
+keep_going = "y"
+
+while keep_going == "y":
+    game(board)
+    board = make_board()
+    keep_going = input("Do you want to play again? Y/n  ").lower()
 
 
 
@@ -128,18 +177,25 @@ def check_winner():
 #     player_1_row = int(input("Choose a row for an X"))
 #     player_1_column = int(input("Choose a column for an X"))
 
-for x in board:
-    print(x)
+# for x in board:
+#     print(x)
 
 
-for turn in range(1,10):
-    if check_winner() == True:
-        print("We have a winner")
-        break
-    elif turn in player_1_turns:
-        player_1_row = "start"
-        player_1_column = "start"
-        player_1_turn()
+# for turn in range(1,11):
+#     if check_winner() == True:
+#         print("We have a winner")
+#         break
+#     if turn == 10:
+#         print("Looks like a stalemate")
+#     elif turn in player_1_turns:
+#         player_1_row = "start"
+#         player_1_column = "start"
+#         player_1_turn()
+#     else:
+#
+#         player_2_row = "start"
+#         player_2_column = "start"
+#         player_2_turn()
 
 
         # print("PLAYER 1 it is your turn \n")
@@ -150,11 +206,11 @@ for turn in range(1,10):
         # change_board_1(player_1_row, player_1_column)
         # show_board(board)
 
-    else:
-
-        player_2_row = "start"
-        player_2_column = "start"
-        player_2_turn()
+    # else:
+    #
+    #     player_2_row = "start"
+    #     player_2_column = "start"
+    #     player_2_turn()
 
         # print("PLAYER 2 it is your turn \n")
         # while player_2_row not in valid:
