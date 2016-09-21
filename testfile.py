@@ -22,3 +22,54 @@ def change_board(board, move, player):
 change_board(board, move, "X")
 
 print(board)
+
+if "X" not in board[0] and "-" not in board[0]:
+    print("Player 2 Wins")
+    return True
+elif "O" not in board[0] and "-" not in board[0]:
+    print("Player 1 Wins")
+    return True
+elif "X" not in board[1] and "-" not in board[1]:
+    print("Player 2 Wins")
+    return True
+elif "O" not in board[1] and "-" not in board[1]:
+    print("Player 1 Wins")
+    return True
+elif "X" not in board[2] and "-" not in board[2]:
+    print("Player 2 Wins")
+    return True
+elif "O" not in board[2] and "-" not in board[2]:
+    print("Player 1 Wins")
+    return True
+elif "X" not in column_0 and "-" not in column_0:
+    print("Player 2 Wins")
+    return True
+elif "O" not in column_0 and "-" not in column_0:
+    print("Player 1 Wins")
+    return True
+elif "X" not in column_1 and "-" not in column_1:
+    print("Player 2 Wins")
+    return True
+elif "O" not in column_1 and "-" not in column_1:
+    print("Player 1 Wins")
+    return True
+elif "X" not in column_2 and "-" not in column_2:
+    print("Player 2 Wins")
+    return True
+elif "O" not in column_2 and "-" not in column_2:
+    print("Player 1 Wins")
+    return True
+elif "O" not in diagonal_a and "-" not in diagonal_a:
+    print("Player 1 Wins")
+    return True
+elif "X" not in diagonal_a and "-" not in diagonal_a:
+    print("Player 2 Wins")
+    return True
+elif "O" not in diagonal_b and "-" not in diagonal_b:
+    print("Player 1 Wins")
+    return True
+elif "X" not in diagonal_b and "-" not in diagonal_b:
+    print("Player 2 Wins")
+    return True
+else:
+    return False
