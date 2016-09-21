@@ -56,21 +56,32 @@ def player_1_turn():
     print("PLAYER 1 it is your turn \n")
     row = player_1_choice_row()
     column = player_1_choice_column()
-    change_board_1(row, column)
-    show_board(board)
+    if board[row][column] == "-":
+        change_board_1(row, column)
+        show_board(board)
+    else:
+        print("That spot is taken")
+        player_1_turn()
+
 def player_2_turn():
     print("PLAYER 2 it is your turn \n")
     row = player_2_choice_row()
     column = player_2_choice_column()
-    change_board_2(row, column)
-    show_board(board)
+    if board[row][column] == "-":
+        change_board_2(row, column)
+        show_board(board)
+    else:
+        print("That spot is taken")
+        player_2_turn()
 
 def check_winner():
     column_0 = [board[0][0], board[1][0], board[2][0]]
     column_1 = [board[0][1], board[1][1], board[2][1]]
     column_2 = [board[0][2], board[1][2], board[2][2]]
-    print(column_0, column_1, column_2)
-    print(board[0], board[1], board[2])
+    diagonal_a = [board[0][0], board[1][1], board[2][2]]
+    diagonal_b = [board[0][2], board[1][1], board[2][0]]
+    # print(column_0, column_1, column_2)
+    # print(board[0], board[1], board[2])
 
     if "X" not in board[0] and "-" not in board[0]:
         return True
@@ -86,17 +97,26 @@ def check_winner():
         return True
     elif "X" not in column_0 and "-" not in column_0:
         return True
-    elif "0" not in column_0 and "-" not in column_0:
+    elif "O" not in column_0 and "-" not in column_0:
         return True
     elif "X" not in column_1 and "-" not in column_1:
         return True
-    elif "0" not in column_1 and "-" not in column_1:
+    elif "O" not in column_1 and "-" not in column_1:
         return True
     elif "X" not in column_2 and "-" not in column_2:
         return True
-    elif "0" not in column_2 and "-" not in column_2:
+    elif "O" not in column_2 and "-" not in column_2:
         return True
-
+    elif "O" not in diagonal_a and "-" not in diagonal_a:
+        return True
+    elif "X" not in diagonal_a and "-" not in diagonal_a:
+        return True
+    elif "O" not in diagonal_b and "-" not in diagonal_b:
+        return True
+    elif "X" not in diagonal_b and "-" not in diagonal_b:
+        return True
+    else:
+        return False
 
 
 
